@@ -154,7 +154,7 @@ Há 3 loops de 0 a n aninhados, logo a complexidade função é $O(n^3)$.
 
 ???
 
-É evidente que a complexidade de tempo da multiplicação de matrizes é uma ordem de grandeza superior que a da soma. A multiplicação é uma operação bastante importante para diversas areas da computação, como processamento de imagens e inteligência artificial. Como podemos aproximar a complexidade da multiplicação
+É evidente que a complexidade de tempo da multiplicação de matrizes é uma ordem de grandeza superior que a da soma. A multiplicação é uma operação bastante importante para diversas áreas da computação, como processamento de imagens e inteligência artificial. Como podemos aproximar a complexidade da multiplicação
 à da soma?
 
 Algoritmo Strassen para caso particular matrizes 2x2 
@@ -197,15 +197,15 @@ A demonstração do porque isso funciona não entra no escopo da matéria. Apena
 Sabemos que no método tradicional de uma matriz quadrada de ordem n temos $n^3$ multiplicações. Portanto, para resultar uma matriz 2x2 precisamos de 8 multiplicações. Utilizando esse novo método, precisamos apenas de 7 multiplicações. Por outro lado, temos 18 adições para se realizar, enquanto no método tradicional seriam 4.
 
 Será que a diminuição de apenas uma multiplicação vai compensar tantas adições extras? Nesse caso, em que os elementos da matriz são apenas números realmente
-não parece fazer sentido. Porem estamos analisando apenas o caso de n=2,vamos agora tentar generalizar para matrizes com outros n.
+não parece fazer sentido. Porém estamos analisando apenas o caso de n=2,vamos agora tentar generalizar para matrizes com outros n.
 
  
 
 
 Multiplicação com divisão e conquista
 ---------
-O verdadeiro algoritmo de Strassen não funciona apenas para matrizes 2x2. Para entedermos o algoritmo completo, precisamos primeiro ver como podemos quebrar uma multiplicação de matrizes em multiplicações menores.
-Por exemplo uma matriz X de ordem 4 pode ser representada como uma matrix 2x2 onde cada elemento é uma matriz 2x2.
+O verdadeiro algoritmo de Strassen não funciona apenas para matrizes 2x2. Para entendermos o algoritmo completo, precisamos primeiro ver como podemos quebrar uma multiplicação de matrizes em multiplicações menores.
+Por exemplo uma matriz X de ordem 4 pode ser representada como uma matriz 2x2 onde cada elemento é uma matriz 2x2.
 $$
 	X
 	=
@@ -244,7 +244,7 @@ k & l \\
 o & p \\
 \end{bmatrix};
 $$
-Poderiamos ter tabem uma matriz Y 2x2 onde cada elemento é uma matriz 2x2.
+Poderíamos ter também uma matriz Y 2x2 onde cada elemento é uma matriz 2x2.
 $$ 
 Y =
 	\begin{bmatrix}
@@ -270,8 +270,8 @@ Como vimos, somar uma matriz possui complexidade de tempo quadrada enquanto mult
 
 Strassen generalizado recursivo
 ------------------------
-Considerando as mesmas matrizes x e y da etapa anterior, poderiamos utilizar a estrategia criada por strassen para calcular AE, BG, AF, BH...
-Mas podemos ir alem disso, ja que X e Y são matrizzes 2x2 podemos usar a mesma estratégia para calcular X e Y, porém agoras os 7 produtos serão matrizes:
+Considerando as mesmas matrizes x e y da etapa anterior, poderiamos utilizar a estratégia criada por strassen para calcular AE, BG, AF, BH...
+Mas podemos ir alem disso, já que X e Y são matrizes 2x2 podemos usar a mesma estratégia para calcular X e Y, porém agoras os 7 produtos serão matrizes:
 
 $$
 	\begin{aligned}
