@@ -197,9 +197,9 @@ A demonstração do porque isso funciona não entra no escopo da matéria. Apena
 Sabemos que no método tradicional de uma matriz quadrada de ordem n temos $n^3$ multiplicações. Portanto, para resultar uma matriz 2x2 precisamos de 8 multiplicações. Utilizando esse novo método, precisamos apenas de 7 multiplicações. Por outro lado, temos 18 adições para se realizar, enquanto no método tradicional seriam 4.
 
 Será que a diminuição de apenas uma multiplicação vai compensar tantas adições extras? Nesse caso, em que os elementos da matriz são apenas números realmente
-não parece fazer sentido. Porém, não existe regra na matemática que impede que o elemento de uma matriz seja uma outra matriz. Como vimos, somar uma matriz possui complexidade 1 ordem de grandeza superior que multiplicar uma matriz.
+não parece fazer sentido. Porem estamos analisando apenas o caso de n=2,vamos agora tentar generalizar para matrizes com outros n.
 
-Já que o elemento pode também ser uma matriz, e estamos trocando 1 multiplicação por 14 adições, em que cenário podemos encontrar uma matriz composta de outras matrizes? É essa pergunta que vamos responder agora.
+ 
 
 
 Multiplicação com divisão e conquista
@@ -266,6 +266,8 @@ O resultado aqui seria o mesmo que multiplicar as duas como matrizes 4x4.
 Note que AE aqui é uma multiplicação de matrizes. Além disso, AE+BG é uma soma de matrizes.
 !!!
 
+Como vimos, somar uma matriz possui complexidade de tempo quadrada enquanto multiplicar tem complexidade cúbica. Se voltarmos a pergunta do fim da seção anterior, agora sim faz sentido ter um numero maior de adicoes pois cada multiplicacao seria $O(n^3)$.
+
 Strassen generalizado recursivo
 ------------------------
 Considerando as mesmas matrizes x e y da etapa anterior, poderiamos utilizar a estrategia criada por strassen para calcular AE, BG, AF, BH...
@@ -304,6 +306,7 @@ Aqui a11,a12... e b11,b12... são matrizes.
 Portanto podemos partir de qualquer matriz quadrada de ordem n onde n é uma potencia de 2 aplicar essa estrategia de quebrar a matriz em 4 pedaços recursivamente e estaremos sempre trabalhando com matrizes com n=2.
 
 **A implementar na proxima sprint**
+* Detalhar mais a seção Strassen generalizado
 * Implementar strassen
-* strassen em matrizes em que n nao é potencia de 2
-* Conclusao de complexidade de tempo de Strassen
+* strassen em matrizes em que n nao é potência de 2
+* Conclusão de complexidade de tempo de Strassen
