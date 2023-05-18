@@ -55,24 +55,6 @@ $$
 $$
 
 ??? Checkpoint
-
-Implemente em C uma função que receba um inteiro n e três matrizes quadradas de ordem n. Ao rodar a função, a terceira matriz deve a soma da primeira e da segunda.
-::: Gabarito
-
-```c
-void matrix_sum(int matrix1[n][n], int matrix2[n][n], int result_matrix[n][n], int n) {
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < n; j++) {
-			result_matrix[i][j] = matrix1[i][j] + matrix2[i][j];
-		}
-	}
-}
-```
-
-:::
-
-???
-??? Checkpoint
 Qual a complexidade da soma de matrizes quadradas?
 :::Gabarito
 É necessário fazer uma soma para cada elemento da matriz. A matriz tem $n^2$ elementos, então a função é $O(n^2)$
@@ -126,26 +108,7 @@ $$
      \end{bmatrix}
   $$
   $$ c_{ij}= a_{i1} b_{1j} + a_{i2} b_{2j} +\cdots+ a_{in} + b_{nj} = \sum_{k=1}^n a_{ik}b_{kj} $$  
-??? Exercício
 
-Implemente em C uma função que receba um inteiro n e três matrizes quadradas de ordem n e altera a terceira matriz para ser a multiplicação da primeira e da segunda.
-::: Gabarito
-```c
-void matrix_multiply(int matrix1[n][n], int matrix2[n][n], int result_matrix[n][n], int n) {
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < n; j++) {
-			result_matrix[i][j] = 0;
-			for (int k = 0; k < n; k++) {
-				result_matrix[i][j] += matrix1[i][k] * matrix2[k][j];
-			}
-		}
-	}
-}
-```
-
-:::
-
-???
 ??? Checkpoint
 Qual a complexidade da multiplicação de matrizes quadradas?
 :::Gabarito
