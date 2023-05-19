@@ -238,45 +238,140 @@ Note que AE aqui é uma multiplicação de matrizes. Além disso, AE+BG é uma s
 
 Como vimos, somar uma matriz possui complexidade de tempo quadrada enquanto multiplicar tem complexidade cúbica. Se voltarmos a pergunta do fim da seção anterior, agora sim faz sentido ter um numero maior de adicoes pois cada multiplicacao seria $O(n^3)$.
 
+
 Strassen generalizado recursivo
 ------------------------
-Considerando as mesmas matrizes x e y da etapa anterior, poderiamos utilizar a estratégia criada por strassen para calcular AE, BG, AF, BH...
-Mas podemos ir alem disso, já que X e Y são matrizes 2x2 podemos usar a mesma estratégia para calcular X e Y, porém agoras os 7 produtos serão matrizes:
+Se sabemos a solução de uma versão menor do problema, podemos usar essa solução para calcular facilmente a solução do original. Portanto, o algoritmo de Strassen pode ser solucionado com recursão.
 
-$$
-	\begin{aligned}
-	M_1 &= (a_{11} + a_{22})(b_{11} + b_{22}) \\
-	M_2 &= (a_{21} + a_{22})b_{11} \\
-	M_3 &= a_{11}(b_{12} - b_{22}) \\
-	M_4 &= a_{22}(b_{21} - b_{11}) \\
-	M_5 &= (a_{11} + a_{12})b_{22} \\
-	M_6 &= (a_{21} - a_{11})(b_{11} + b_{12}) \\
-	M_7 &= (a_{12} - a_{22})(b_{21} + b_{22}) \\
-	\end{aligned}
-$$
+??? Checkpoint
 
-$$
-	\begin{bmatrix}
-	a_{11} & a_{12} \\
-	a_{21} & a_{22} \\
-	\end{bmatrix}
-	\times
-	\begin{bmatrix}
-	b_{11} & b_{12} \\
-	b_{21} & b_{22} \\
-	\end{bmatrix}
-	=
-	\begin{bmatrix}
-	M_1 + M_4 - M_5 + M_7 & M_3 + M_5 \\
-	M_2 + M_4 & M_1 - M_2 + M_3 + M_6 \\
-	\end{bmatrix}
-$$
-Aqui a11,a12... e b11,b12... são matrizes.
+Qual a base e o passo da recursão da aplicação do Algoritmo de Strassen?
 
-Portanto podemos partir de qualquer matriz quadrada de ordem n onde n é uma potencia de 2 aplicar essa estrategia de quebrar a matriz em 4 pedaços recursivamente e estaremos sempre trabalhando com matrizes com n=2.
+::: Gabarito
+Base:
+``` c
+Se a ordem da matriz igual a 1, retorna sem fazer nada
+Se não, continua na função
+```
+Passo:
+``` c
+strassen(n/2), sendo n a ordem da matriz
+```
+:::
 
-**A implementar na proxima sprint**
-* Detalhar mais a seção Strassen generalizado
-* Implementar strassen
-* strassen em matrizes em que n nao é potência de 2
-* Conclusão de complexidade de tempo de Strassen
+???
+
+??? Checkpoint
+
+Quantas vezes a função é chamada no escopo da função?
+
+::: Gabarito
+A função deve ser chamada 8 vezes.
+:::
+
+???
+
+??? Checkpoint
+
+Quantas operações são feitas a cada chamada da função?
+
+::: Gabarito
+A função deve ser chamada 8 vezes.
+:::
+
+???
+
+Portanto, podemos definir sua complexidade.
+* Se n for menor ou igual a 1: apenas 1 iteração. (parte não-recursiva)
+* Se n for maior que 1: $n^2$ iterações (parte não-recursiva) + 7 vezes iterações de recursiva(n/2).
+!!! Atenção
+A cada iteração da função serão feitas 18 somas de matrizas. A complexidade da soma de uma matriz é $O(n^2)$.
+!!!
+??? Checkpoint
+
+Qual a função matemática que define a recorrência da função?
+
+::: Gabarito
+$$
+f(n)=\left\{
+\begin{array}{ll}
+7\cdot f(n/2) + n^2, & \text{se } n>1 \\
+1, & \text{se } n\leq 1 \\
+\end{array}
+\right.
+$$
+:::
+
+???
+
+Por fim, podemos concluir que a árvore da função é
+
+[ADICIONAR AQUI UMA FOTO DA ÁRVORE]
+
+??? Checkpoint
+
+Qual a soma das chamadas não recursivas?
+
+::: Gabarito
+$7^0\cdot {\frac{n}{2^0}}^2 + 7^1\cdot {\frac{n}{2^1}}^2 + 7^2\cdot {\frac{n}{2^2}}^2 + ... + 7^{(h-2)}\cdot {\frac{n}{2^{h-2}}}^2 + 7^{(h-1)}$
+$7^0\cdot {\frac{n^2}{4^0}} + 7^1\cdot {\frac{n^2}{4^1}} + 7^2\cdot {\frac{n^2}{4^2}} + ... + 7^{(h-2)}\cdot {\frac{n^2}{4^{h-2}}} + 7^{(h-1)}$
+$n^2\cdot (\frac{7}{4}^0 + \frac{7}{4}^1 + \frac{7}{4}^2 + ... + \frac{7}{4}^{(h-2)}) + 7^{(h-1)}$
+
+Soma de PG!
+
+$n^2\cdot (1 \cdot \frac{\frac{7}{4}^{(h-1)}-1}{\frac{7}{4}-1}) + 7^{(h-1)}$
+:::
+
+???
+
+??? Checkpoint
+
+Qual a altura da árvore?
+
+::: Gabarito
+$\log _{2} n$
+:::
+
+???
+
+??? Checkpoint
+
+Dado a altura da árvore e a soma das chamadas recursivas, qual a complexidade do algoritmo?
+
+Dica: lembre-se das [propriedades de logaritmo](https://ensino.hashi.pro.br/desprog/resumo/analise/caixa.html)
+
+::: Gabarito
+$n^2\cdot (\frac{
+				\frac{7}{4}^{{(\log _{2} n}-1)}-1}{\frac{7}{4}-1}) + 7^{({\log _{2} n}-1)}$
+
+Aplicando a propriedade distributiva da potenciação, temos:
+
+$n^2\cdot (\frac{\frac{7}{4}^{{(\log _{2} n}-1)}-1}{\frac{7}{4}-1}) + 7^{({\log _{2} n}-1)}$
+
+Aplicando a propriedade da mudança de base de logaritmos, temos:
+
+$n^2\cdot (\frac{7^{(\frac{\log _{7} n}{\log _{7} 2}-1)}-1}{6}) + 7^{(\frac{\log _{7} n}{\log _{7} 2}-1)}$
+
+$n^2\cdot (\frac{7^{(\frac{\log _{7} n}{\log _{7} 2})}\cdot7^{-1}-1}{6}) + 7^{(\frac{\log _{7} n}{\log _{7} 2})}\cdot7^{-1}$
+
+$n^2\cdot (\frac{\frac{n^\frac{1}{\log _{7} 2}}{7}-1}{6}) + \frac{n^\frac{1}{\log _{7} 2}}{7}$
+
+Aplicando a propriedade distributiva e ignorando as partes irrelevantes para o cálculo da complexidade, temos:
+
+$n^2\cdot n^\frac{1}{\log _{7} 2}$
+
+Como $\frac{1}{\log _{7} 2} = \log _{2} 7$
+
+$n^{2 + 2,8}$
+
+
+
+:::
+
+???
+
+
+
+
+
+
