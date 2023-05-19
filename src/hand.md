@@ -1,12 +1,6 @@
 Algoritmo de Strassen
 ======
-Fazer o algoritmo trivial e fazer o caso para o 2x2. Quantas somas e quantas multiplicações.
-Se substituir os valores vai dar exatamente o mesmo valor, então só mostrar o valor final.
-Já passou um exercício para deduzir qual o número de somas e mult, podemos passar um exercício para deduzir o total de somas e multiplicações da strassen -> fazer tabela do Ariel.
-Explicar logo em seguida porque multiplicações pesam muito mais que adições.
-Não precisa jogar que multiplicar em partes funciona, podemos fazer um exercício para o pessoal concluir isso.
-Fazer a multiplicação de uma 4x4 e depois mostrar só do canto superior esquerdo dela.
-Apresentar a complexidade de uma forma próxima como ele apresanta nas dele. Várias atividades pequenas guiando o raciocínio.
+
 Soma de matrizes quadradas
 ---------
 Antes de falar de multiplicação de matrizes, precisamos falar um pouco sobre soma de matrizes.
