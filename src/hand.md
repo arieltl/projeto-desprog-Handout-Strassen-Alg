@@ -239,7 +239,7 @@ Note que AE aqui é uma multiplicação de matrizes. Além disso, AE+BG é uma s
 Como vimos, somar uma matriz possui complexidade de tempo quadrada enquanto multiplicar tem complexidade cúbica. Se voltarmos a pergunta do fim da seção anterior, agora sim faz sentido ter um numero maior de adicoes pois cada multiplicacao seria $O(n^3)$.
 
 
-Strassen generalizado recursivo
+Complexidade do Algoritmo de Strassen
 ------------------------
 Se sabemos a solução de uma versão menor do problema, podemos usar essa solução para calcular facilmente a solução do original. Portanto, o algoritmo de Strassen pode ser solucionado com recursão.
 
