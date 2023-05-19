@@ -333,42 +333,48 @@ $\log _{2} n$
 :::
 
 ???
+!!!
+Para entender as contas a seguir, lembre-se das [propriedades de logaritmo](https://ensino.hashi.pro.br/desprog/resumo/analise/caixa.html).
+!!!
+Substituindo a altura da árvore na soma das chamadas não recursivas temos:
 
-??? Checkpoint
-
-Dado a altura da árvore e a soma das chamadas recursivas, qual a complexidade do algoritmo?
-
-Dica: lembre-se das [propriedades de logaritmo](https://ensino.hashi.pro.br/desprog/resumo/analise/caixa.html)
-
-::: Gabarito
-$n^2\cdot (\frac{
-				\frac{7}{4}^{{(\log _{2} n}-1)}-1}{\frac{7}{4}-1}) + 7^{({\log _{2} n}-1)}$
+$n^{2}  \cdot \frac {((\frac{7}{4})^{(\log_2 n)-1})-1}{\frac{7}{4}-1}+7^{(\log_2 n)-1}$
 
 Aplicando a propriedade distributiva da potenciação, temos:
 
-$n^2\cdot (\frac{\frac{7}{4}^{{(\log _{2} n}-1)}-1}{\frac{7}{4}-1}) + 7^{({\log _{2} n}-1)}$
+$n^{2}  \cdot \frac {(\frac{7^{(\log_2 n)-1}} {4^{(\log_2 n)-1}})-1}{\frac{7}{4}-1}+7^{(\log_2 n)-1}$
 
 Aplicando a propriedade da mudança de base de logaritmos, temos:
 
-$n^2\cdot (\frac{7^{(\frac{\log _{7} n}{\log _{7} 2}-1)}-1}{6}) + 7^{(\frac{\log _{7} n}{\log _{7} 2}-1)}$
+$n^{2}  \cdot \frac {(\frac{7^{(\frac{\log_7 n}{\log_7 2}-1)}} {4^{(\log_2 n)-1}})-1}{\frac{7}{4}-1}+7^{(\log_2 n)-1}$
 
-$n^2\cdot (\frac{7^{(\frac{\log _{7} n}{\log _{7} 2})}\cdot7^{-1}-1}{6}) + 7^{(\frac{\log _{7} n}{\log _{7} 2})}\cdot7^{-1}$
+Aplicando a propriedade inversa da multiplicação de potências de mesma base, temos:
 
-$n^2\cdot (\frac{\frac{n^\frac{1}{\log _{7} 2}}{7}-1}{6}) + \frac{n^\frac{1}{\log _{7} 2}}{7}$
+$n^{2}  \cdot \frac {(\frac{7^{(\frac{\log_7 n}{\log_7 2})} \cdot 7^{-1}} {(2^2)^{(\log_2 n)} \cdot 4^{-1}})-1}{\frac{7}{4}-1}+7^{(\log_2 n)-1}$
 
-Aplicando a propriedade distributiva e ignorando as partes irrelevantes para o cálculo da complexidade, temos:
+Isolando o *n* no denominador da fração e aplicando a propriedade $x^{\log_x n} = n$, temos
 
-$n^2\cdot n^\frac{1}{\log _{7} 2}$
+$n^{2}  \cdot \frac {(\frac{n^{\log_7 2}}{n^2}) \cdot \frac{4}{7} -1}{\frac{7}{4}-1}+7^{(\log_2 n)-1}$
 
-Como $\frac{1}{\log _{7} 2} = \log _{2} 7$
+??? Checkpoint
 
-$n^{2 + 2,8}$
+Aplicando a propriedade distributiva e ignorando as partes irrelevantes para o cálculo da complexidade, qual a complexidade do algoritmo? 
 
+::: Gabarito
 
+$n^{2}  \cdot (\frac{n^{\log_7 2}}{n^2})$
+
+$n^{\log_7 2}$
+
+Portanto, a complexidade do algoritmo de strassen é, aproximadamente, $O(n^{2.8})$.
 
 :::
 
 ???
+
+!!! Curiosidade
+O algoritmo XXX possui complexidade $O(X)$. Atualmente, é o algortimo mais eficiente para multiplicação de matrizes.
+!!!
 
 
 
