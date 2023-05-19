@@ -306,7 +306,7 @@ $$
 
 Por fim, podemos concluir que a árvore da função é
 
-[ADICIONAR AQUI UMA FOTO DA ÁRVORE]
+![](strassen.drawio.png)
 
 ??? Checkpoint
 
