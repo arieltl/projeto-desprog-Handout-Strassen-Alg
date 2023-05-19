@@ -1,12 +1,6 @@
 Algoritmo de Strassen
 ======
-Fazer o algoritmo trivial e fazer o caso para o 2x2. Quantas somas e quantas multiplicações.
-Se substituir os valores vai dar exatamente o mesmo valor, então só mostrar o valor final.
-Já passou um exercício para deduzir qual o número de somas e mult, podemos passar um exercício para deduzir o total de somas e multiplicações da strassen -> fazer tabela do Ariel.
-Explicar logo em seguida porque multiplicações pesam muito mais que adições.
-Não precisa jogar que multiplicar em partes funciona, podemos fazer um exercício para o pessoal concluir isso.
-Fazer a multiplicação de uma 4x4 e depois mostrar só do canto superior esquerdo dela.
-Apresentar a complexidade de uma forma próxima como ele apresanta nas dele. Várias atividades pequenas guiando o raciocínio.
+
 Soma de matrizes quadradas
 ---------
 Antes de falar de multiplicação de matrizes, precisamos falar um pouco sobre soma de matrizes.
@@ -395,7 +389,7 @@ Então, se essa estratégia funciona, podemos quebrar matrizes maiores até cheg
 Como vimos, somar uma matriz possui complexidade de tempo quadrada enquanto multiplicar tem complexidade cúbica. Se voltarmos a pergunta do fim da seção anterior, agora sim faz sentido ter um numero maior de adicoes pois cada multiplicacao seria $O(n^3)$.
 
 
-Strassen generalizado recursivo
+Complexidade do Algoritmo de Strassen
 ------------------------
 Se sabemos a solução de uma versão menor do problema, podemos usar essa solução para calcular facilmente a solução do original. Portanto, o algoritmo de Strassen pode ser solucionado com recursão.
 
@@ -462,7 +456,7 @@ $$
 
 Por fim, podemos concluir que a árvore da função é
 
-[ADICIONAR AQUI UMA FOTO DA ÁRVORE]
+![](strassen.drawio.png)
 
 ??? Checkpoint
 
