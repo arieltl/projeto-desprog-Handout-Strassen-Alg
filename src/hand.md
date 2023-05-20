@@ -221,7 +221,7 @@ $$
 $$
 
 !!!
-A demonstração de como ele chegou nesses produtos não entra no escopo da disciplina (algumas ideias de matemáticos são de fato bem malucas). 
+A demonstração de como ele chegou nesses produtos não entra no escopo da disciplina, caso tenha curiosidade veja este [video](https://www.youtube.com/watch?v=OSelhO6Qnlc.) 
 !!!
 
 ??? Checkpoint
@@ -322,7 +322,7 @@ X \times Y =
 $$
 
 Note que o resultado dessa multiplicação é muito parecido com a multiplicação 2x2 feita anteriormente, porém dessa vez os elementos não são números e sim matrizes de ordem 2.
-Mas antes de prosseguir vamos fazer uma verificação dessa estratégia. Considere as seguintes matrizes:
+Mas antes de prosseguir vamos fazer uma verificação dessa propriedade. Considere as seguintes matrizes:
 
 
 $$ 
@@ -372,7 +372,7 @@ a \cdot q + b \cdot u + c \cdot y + d \cdot \gamma & a \cdot r + b \cdot v + c \
 e \cdot q + f \cdot u + g \cdot y + h \cdot \gamma & e \cdot r + f \cdot v + g \cdot z + h \cdot \delta\\
 \end{bmatrix}
 $$
-Você pode perceber que se seguirmos a regra tradicional sem quebrar a matriz em matrizes menores chegaremos no mesmo resultado, então essa estratégia é sim válida!.
+Você pode perceber que se seguirmos a regra tradicional sem quebrar a matriz em matrizes menores chegaremos no mesmo resultado, então essa propriedade é sim válida!.
 :::
 
 ???
@@ -384,7 +384,29 @@ O resultado aqui seria o mesmo que multiplicar as duas como matrizes 4x4.
 Note que AE aqui é uma multiplicação de matrizes. Além disso, AE+BG é uma soma de matrizes.
 !!!
 
-Então, se essa estratégia funciona, podemos quebrar matrizes maiores até chegar em matrizes 2 x 2 e utilizar o método de Strassen. Perceba agora que a diminuição do número de multiplicações tem muito mais peso, uma vez que agora estaremos economizando uma multiplicação de matrizes!!
+??? Checkpoint
+Aplicando a ideia de Strassen e a quebra em matrizes menores, faça o P2 e o P3 de Strassen considerando o produto de matrizes $X \times Y$
+:::Gabarito.
+A ideia aqui é fazer uma associação, no qual $a_{11} -> A , a_{12} -> B,b_{11} -> E$ e assim sucessivamente. Desse modo vamos ter:
+$$
+	\begin{aligned}
+	P_1 &= (A + D) \cdot (E + H) \\
+	P_2 &= (C + D) \cdot E \\
+	P_3 &= A \cdot (F - H) \\
+	P_4 &= D \cdot (G - E) \\
+	P_5 &= (A + B) \cdot H \\
+	P_6 &= (C - A) \cdot (E + F) \\
+	P_7 &= (B - D) \cdot (G + H) \\
+	\end{aligned}
+$$
+Agora todos os termos são matrizes!
+:::
+
+???
+
+
+Então, se essa propriedade funciona, podemos quebrar matrizes maiores até chegar em matrizes 2 x 2 e utilizar o método de Strassen. Perceba agora que a diminuição do número de multiplicações tem muito mais peso, uma vez que agora estaremos economizando uma multiplicação de matrizes!!
+
 
 Como vimos, somar uma matriz possui complexidade de tempo quadrada enquanto multiplicar tem complexidade cúbica. Se voltarmos a pergunta do fim da seção anterior, agora sim faz sentido ter um numero maior de adicoes pois cada multiplicacao seria $O(n^3)$.
 
