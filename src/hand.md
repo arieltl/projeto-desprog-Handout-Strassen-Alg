@@ -552,7 +552,7 @@ Portanto, a complexidade do algoritmo de strassen é, aproximadamente, $O(n^{2.8
 ???
 
 !!! Curiosidade
-O algoritmo XXX possui complexidade $O(X)$. Atualmente, é o algortimo mais eficiente para multiplicação de matrizes.
+O algoritmo de Alman, Williams (2020) possui complexidade $O(n^{2.372})$. Atualmente, é o algortimo mais eficiente para multiplicação de matrizes.
 !!!
 
 
