@@ -203,7 +203,30 @@ $$
 	P_7 &= (a_{12} - a_{22}) \cdot (b_{21} + b_{22}) \\
 	\end{aligned}
 $$
-Depois, podemos calcular a matriz resultante usando apenas somas. O resultado será igual ao do método aprendido no Ensino Médio.
+
+??? Checkpoint
+Dada as matrizes
+$$
+	A =
+	\begin{bmatrix}
+	a_{11} & a_{12} \\
+	a_{21} & a_{22} \\
+	\end{bmatrix}\\
+$$
+$$
+	B=
+	\begin{bmatrix}
+	b_{11} & b_{12} \\
+	b_{21} & b_{22} \\
+	\end{bmatrix}
+$$
+Como podemos calcular a matriz $C$ que é igual a $A \times B$ usando estes produtos? (Dica: calcule $P2+P4$ e compara com o resultado da multiplicação feita anteriormente no papel).
+:::Gabarito
+voce deve ter chegado em $a_{21}b_{11}$+$a_{22}b_{21}$ que é $c_{21}$. Podemos calcular $A \times B$ usando somas dos 7 produtos.
+:::
+
+???
+Os outros elementos da matriz $C$ podem ser calculadas usando as expressões abaixo:
 $$
 	\begin{bmatrix}
 	a_{11} & a_{12} \\
@@ -225,21 +248,10 @@ $$
 A demonstração de como ele chegou nesses produtos não entra no escopo da disciplina, caso tenha curiosidade veja este [video](https://www.youtube.com/watch?v=OSelhO6Qnlc.) 
 !!!
 
-??? Checkpoint
-Aplicando a ideia de Strassen, verifique se o termo $P_2 + P_4$ resulta no mesmo termo que fazendo a multiplicação clássica.
-:::Gabarito
-Você deve chegar no mesmo termo de 2 exercícios atrás, caso não tenha chegado revise as contas.
-:::
-
-???
-
 Sabemos que no método tradicional de uma matriz quadrada de ordem n temos $n^3$ multiplicações. Portanto, para resultar uma matriz 2x2 precisamos de 8 multiplicações. Utilizando esse novo método, precisamos apenas de 7 multiplicações. Por outro lado, temos 18 adições para se realizar, enquanto no método tradicional seriam 4.
 
 Será que a diminuição de apenas uma multiplicação vai compensar tantas adições extras? Nesse caso, em que os elementos da matriz são apenas números realmente
 não parece fazer sentido. Porém estamos analisando apenas o caso de n=2, vamos agora tentar generalizar para matrizes com outros n.
-
- 
-
 
 Multiplicação com divisão e conquista
 ---------
