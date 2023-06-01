@@ -126,21 +126,20 @@ $$
 Agora pegue papel e lápis e faça a multiplicação de uma matriz 2x2?
 $$
 		\begin{bmatrix}
-		a & b \\
-		c & d \\
-		\end{bmatrix}
-		\times
+		a_{11} & a_{12} \\
+		a_{21} & a_{22} \\
+		\end{bmatrix} \times 
 		\begin{bmatrix}
-		e & f  \\
-		g & h  \\
+		b_{11} & b_{12} \\
+		b_{21} & b_{22} \\
 		\end{bmatrix}
 		= ?
 $$
 :::Gabarito
 $$
 		\begin{bmatrix}
-		(a \cdot e + b \cdot g) & (a \cdot f + b \cdot h) \\
-		(c \cdot e + d \cdot g) & (c \cdot f + d \cdot h) \\
+		a_{11} \cdot b_{11} + a_{12} \cdot b_{21} & a_{11} \cdot b_{12} + a_{12} \cdot b_{22} \\
+		a_{21} \cdot b_{11} + a_{22} \cdot b_{21} & a_{21} \cdot b_{12} + a_{22} \cdot b_{22} \\
 		\end{bmatrix}
 $$
 :::
