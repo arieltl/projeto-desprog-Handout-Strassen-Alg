@@ -510,23 +510,23 @@ Para entender as contas a seguir, lembre-se das [propriedades de logaritmo](http
 !!!
 Substituindo a altura da árvore na soma das chamadas não recursivas temos:
 
-$n^{2}  \cdot \frac {((\frac{7}{4})^{(\log_2 n)-1})-1}{\frac{7}{4}-1}+7^{(\log_2 n)-1}$
+$n^{2}  \cdot \frac {((7/4)^{(\log_2 n)-1})-1}{7/4-1}+7^{(\log_2 n)-1}$
 
 Aplicando a propriedade distributiva da potenciação, temos:
 
-$n^{2}  \cdot \frac {(\frac{7^{(\log_2 n)-1}} {4^{(\log_2 n)-1}})-1}{\frac{7}{4}-1}+7^{(\log_2 n)-1}$
+$n^{2}  \cdot \frac {(7^{(\log_2 n)-1})/ (4^{(\log_2 n)-1})-1}{7/4-1}+7^{(\log_2 n)-1}$
 
 Aplicando a propriedade da mudança de base de logaritmos, temos:
 
-$n^{2}  \cdot \frac {(\frac{7^{(\frac{\log_7 n}{\log_7 2}-1)}} {4^{(\log_2 n)-1}})-1}{\frac{7}{4}-1}+7^{(\log_2 n)-1}$
+$n^{2}  \cdot \frac {(7^{(\frac{\log_7 n}{\log_7 2}-1)}) / (4^{(\log_2 n)-1})-1}{7/4-1}+7^{(\log_2 n)-1}$
 
 Aplicando a propriedade inversa da multiplicação de potências de mesma base, temos:
 
-$n^{2}  \cdot \frac {(\frac{7^{(\frac{\log_7 n}{\log_7 2})} \cdot 7^{-1}} {(2^2)^{(\log_2 n)} \cdot 4^{-1}})-1}{\frac{7}{4}-1}+7^{(\log_2 n)-1}$
+$n^{2}  \cdot \frac {(7^{(\frac{\log_7 n}{\log_7 2})} \cdot 7^{-1}) /((2^2)^{(\log_2 n)} \cdot 4^{-1})-1}{7/4-1}+7^{(\log_2 n)-1}$
 
 Isolando o *n* no denominador da fração e aplicando a propriedade $x^{\log_x n} = n$, temos
 
-$n^{2}  \cdot \frac {(\frac{n^{\log_7 2}}{n^2}) \cdot \frac{4}{7} -1}{\frac{7}{4}-1}+7^{(\log_2 n)-1}$
+$n^{2}  \cdot \frac {(\frac{n^{\log_7 2}}{n^2}) \cdot 4/7 -1}{7/4-1}+7^{(\log_2 n)-1}$
 
 ??? Checkpoint
 
