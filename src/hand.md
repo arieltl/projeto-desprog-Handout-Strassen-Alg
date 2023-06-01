@@ -194,22 +194,9 @@ Note que para realizar a multiplicação de duas matrizes 2x2 são necessárias 
 
 Algoritmo Strassen para caso particular matrizes 2x2 
 ---------
-Volker Strassen descobriu uma forma alternativa para realizar a multiplicação de duas matrizes 2x2. Primeiramente, é necessário calcular 7 produtos
-a partir dos elementos das matrizes que deseja-se multiplicar.
-$$
-	\begin{aligned}
-	P_1 &= (a_{11} + a_{22}) \cdot (b_{11} + b_{22}) \\
-	P_2 &= (a_{21} + a_{22}) \cdot b_{11} \\
-	P_3 &= a_{11} \cdot (b_{12} - b_{22}) \\
-	P_4 &= a_{22} \cdot (b_{21} - b_{11}) \\
-	P_5 &= (a_{11} + a_{12}) \cdot b_{22} \\
-	P_6 &= (a_{21} - a_{11}) \cdot (b_{11} + b_{12}) \\
-	P_7 &= (a_{12} - a_{22}) \cdot (b_{21} + b_{22}) \\
-	\end{aligned}
-$$
 
 ??? Checkpoint
-Dada as matrizes
+Dada as matrizes:
 $$
 	A =
 	\begin{bmatrix}
@@ -224,12 +211,25 @@ $$
 	b_{21} & b_{22} \\
 	\end{bmatrix}
 $$
-Como podemos calcular a matriz $C$ que é igual a $A \times B$ usando estes produtos? (Dica: calcule $P2+P4$ e compara com o resultado da multiplicação feita anteriormente no papel).
+Calcule $(a_{21} + a_{22}) \cdot b_{11} + a_{22} \cdot (b_{21} - b_{11})$ e compare com o resultado da multiplicação feita anteriormente no papel
 :::Gabarito
-voce deve ter chegado em $a_{21}b_{11}$+$a_{22}b_{21}$ que é $c_{21}$. Podemos calcular $A \times B$ usando somas dos 7 produtos.
+Você deve ter chegado em $a_{21}b_{11}$+$a_{22}b_{21}$ que é $c_{21}$.
 :::
-
 ???
+
+Volker Strassen descobriu uma forma alternativa para realizar a multiplicação de duas matrizes 2x2. Primeiramente, é necessário calcular 7 produtos a partir dos elementos das matrizes que deseja-se multiplicar. Note que o cálculo do último checkpoint é $P_2+P_4$.
+$$
+	\begin{aligned}
+	P_1 &= (a_{11} + a_{22}) \cdot (b_{11} + b_{22}) \\
+	P_2 &= (a_{21} + a_{22}) \cdot b_{11} \\
+	P_3 &= a_{11} \cdot (b_{12} - b_{22}) \\
+	P_4 &= a_{22} \cdot (b_{21} - b_{11}) \\
+	P_5 &= (a_{11} + a_{12}) \cdot b_{22} \\
+	P_6 &= (a_{21} - a_{11}) \cdot (b_{11} + b_{12}) \\
+	P_7 &= (a_{12} - a_{22}) \cdot (b_{21} + b_{22}) \\
+	\end{aligned}
+$$
+
 Os outros elementos da matriz $C$ podem ser calculadas usando as expressões abaixo:
 $$
 	\begin{bmatrix}
