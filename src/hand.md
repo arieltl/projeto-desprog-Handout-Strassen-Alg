@@ -419,6 +419,8 @@ Se sabemos a solução de uma versão menor do problema, podemos usar essa solu�
 
 Qual a base e o passo da recursão da aplicação do Algoritmo de Strassen?
 
+*DICA*: a cada chamada da função é passada a ordem da matriz, sendo essa ordem a metade da matriz onde ela se encontra.
+
 ::: Gabarito
 Base:
 ``` c
@@ -438,7 +440,7 @@ strassen(n/2), sendo n a ordem da matriz
 Quantas vezes a função é chamada no escopo da função?
 
 ::: Gabarito
-A função deve ser chamada 8 vezes.
+A função deve ser chamada 7 vezes.
 :::
 
 ???
@@ -447,21 +449,25 @@ A função deve ser chamada 8 vezes.
 
 Quantas operações são feitas a cada chamada da função?
 
+*DICA*: volte na sessão "Algoritmo Strassen para caso particular matrizes 2x2"
+
 ::: Gabarito
-A função deve ser chamada 8 vezes.
+18 somas de matrizes. Note que as 7 multiplicações de matrizes serão substituídas por chamadas recursivas.
 :::
 
 ???
 
 Portanto, podemos definir sua complexidade.
 * Se n for menor ou igual a 1: apenas 1 iteração. (parte não-recursiva)
-* Se n for maior que 1: $n^2$ iterações (parte não-recursiva) + 7 vezes iterações de recursiva(n/2).
+* Se n for maior que 1: $n^2$ iterações (parte não-recursiva) + 7 iterações de recursiva(n/2).
 !!! Atenção
 A cada iteração da função serão feitas 18 somas de matrizas. A complexidade da soma de uma matriz é $O(n^2)$.
 !!!
 ??? Checkpoint
 
 Qual a função matemática que define a recorrência da função?
+
+*DICA*: A cada chamada da função será calculada a soma das matrizes recebidas com complexidade $O(n^2)$.
 
 ::: Gabarito
 $$
@@ -482,7 +488,7 @@ Por fim, podemos concluir que a árvore da função é
 
 ??? Checkpoint
 
-Qual a soma das chamadas não recursivas?
+Qual a soma das chamadas não recursivas, ou seja, a soma dos vermelhos?
 
 ::: Gabarito
 $7^0\cdot {\frac{n}{2^0}}^2 + 7^1\cdot {\frac{n}{2^1}}^2 + 7^2\cdot {\frac{n}{2^2}}^2 + ... + 7^{(h-2)}\cdot {\frac{n}{2^{h-2}}}^2 + 7^{(h-1)}$
