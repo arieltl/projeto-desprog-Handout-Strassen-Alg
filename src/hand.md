@@ -89,6 +89,7 @@ Como temos uma matriz 3x3 o nosso resultado também será uma matriz 3x3! E para
 * O elemento $r_{11}$ será definido pela multiplicação da linha **1** da primeira matriz e a coluna **1** da segunda matriz,
 * O elemento $r_{12}$ será definido pela multiplicação da linha **1** da primeira matriz e a coluna **2** da segunda matriz. 
 
+:matriz
 
 E assim sucessivamente! Então realizando o cálculo de $r_{11}$, vamos ter linha 1 : $\begin{bmatrix}
 		a & b & c \\
