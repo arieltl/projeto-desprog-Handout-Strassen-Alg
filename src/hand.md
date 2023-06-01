@@ -86,26 +86,20 @@ $$
 		\end{bmatrix}
 $$
 Como temos uma matriz 3x3 o nosso resultado também será uma matriz 3x3! E para determinar cada um dos termos dessa matriz fazemos da seguinte maneira: 
-* O elemento $r_{11}$ será definido pela multiplicação da linha **1** da primeira matriz e a coluna **1** da segunda matriz,
-* O elemento $r_{12}$ será definido pela multiplicação da linha **1** da primeira matriz e a coluna **2** da segunda matriz. 
+* O elemento $A_{1}$ será definido pela soma da multiplicação de cada elemento da  linha **1** da primeira matriz por cada elemento da coluna **1** da segunda matriz,
+* O elemento $A_{2}$ será definido pela soma da multiplicação de cada elemento da  linha **1** da primeira matriz por cada elemento da coluna **2** da segunda matriz,
+Dê uma olhada no passo a passo para um melhor entendimento!
 
 :matriz
 
-E assim sucessivamente! Então realizando o cálculo de $r_{11}$, vamos ter linha 1 : $\begin{bmatrix}
-		a & b & c \\
-		\end{bmatrix}$
-e coluna 1 : $\begin{bmatrix}
-		j \\
-		m \\
-		p \\
-		\end{bmatrix}$
+Explicando o raciocinio em palavras: 
+Para calcular o termo que estará na posição da linha 1 e da coluna 1, vamos utilizar a linha 1 da primeira matriz e a coluna 1 da segunda matriz. Com isso
+fazemos a multiplicação do primeiro elemento da linha pelo o primeiro elemento da coluna somado com o segundo elemento da linha vezes o segundo elemento da coluna e assim por diante.
 
-Agora vamos realizar as multiplicações e somas, o primeiro da linha ( a ) com o primeiro da coluna ( j ) soma com o segundo da linha ( b ) com o segundo da coluna ( m ) soma com o terceiro da linha ( c ) com o terceiro da coluna ( p ). 
-Então teremos:
 
-$$r_{11} =  a \cdot j + b \cdot m + c \cdot p$$
+Então vamos fazer esse passo a passo para $A_{1}$ , $A_{2}$, ... , $A_{8}$ , $A_{9}$.
 
-Fazendo as contas de modo análogo chegamos em : 
+Fazendo as contas para todos os termos, vamos chegar em: 
 
 $$
 		\begin{bmatrix}
@@ -262,74 +256,93 @@ Multiplicação com divisão e conquista
 O verdadeiro algoritmo de Strassen não funciona apenas para matrizes 2x2. Para entendermos o algoritmo completo, precisamos primeiro ver como podemos quebrar uma multiplicação de matrizes em multiplicações menores.
 Por exemplo uma matriz X de ordem 4 pode ser representada como uma matriz 2x2 onde cada elemento é uma matriz 2x2.
 $$
-	X
-	=
-	\begin{bmatrix}
-	a & b & c & d \\
-	e & f & g & h \\
-	i & j & k & l \\
-	m & n & o & p \\
-	\end{bmatrix}
+X = \begin{bmatrix}
+x_{11} & x_{12} & x_{13} & x_{14} \\
+x_{21} & x_{22} & x_{23} & x_{24} \\
+x_{31} & x_{32} & x_{33} & x_{34} \\
+x_{41} & x_{42} & x_{43} & x_{44}
+\end{bmatrix}
 $$
 
 Se formos dividir a matriz X , que é uma matriz 4x4 em uma composição de matrizes 2x2, podemos ver da seguinte forma: 
 
 
 $$	
-	A =
-\begin{bmatrix}
-a & b \\
-e & f \\
+A = \begin{bmatrix}
+x_{11} & x_{12} \\
+x_{21} & x_{22} \\
+\end{bmatrix}\\
+B = \begin{bmatrix}
+x_{13} & x_{14} \\
+x_{23} & x_{24} \\
+\end{bmatrix}\\
+C = \begin{bmatrix}
+x_{31} & x_{32} \\
+x_{41} & x_{42} \\
+\end{bmatrix}\\
+D = \begin{bmatrix}
+x_{33} & x_{34} \\
+x_{43} & x_{44} \\
 \end{bmatrix}
-;
- B = 
-\begin{bmatrix}
-c & d \\
-g & h \\
-\end{bmatrix} ;
-C =
-\begin{bmatrix}
-i & j \\
-m & n \\
-\end{bmatrix};
-D =
-\begin{bmatrix}
-k & l \\
-o & p \\
-\end{bmatrix};
 $$
 
 Com isso, podemos escrever que :
 $$
-	X
-	=
-	\begin{bmatrix}
-	a & b & c & d \\
-	e & f & g & h \\
-	i & j & k & l \\
-	m & n & o & p \\
-	\end{bmatrix}
-	=
-	\begin{bmatrix}
-		A & B \\
-		C & D \\
-	\end{bmatrix}
+X = \begin{bmatrix}
+A & B \\
+C & D \\
+\end{bmatrix} = \begin{bmatrix}
+x_{11} & x_{12} & x_{13} & x_{14} \\
+x_{21} & x_{22} & x_{23} & x_{24} \\
+x_{31} & x_{32} & x_{33} & x_{34} \\
+x_{41} & x_{42} & x_{43} & x_{44}
+\end{bmatrix}
 $$
 
-
-Então, vamos utilizar essa ideia para escrevermos de maneira mais fácil uma multiplicação de duas matrizes 4x4.
-Considerando a matriz:
-
-$$ 
-Y =
-	\begin{bmatrix}
-		E & F \\
-		G & H \\
-	\end{bmatrix}
+Considere tambem a matriz Y:
 $$
-
-
+Y = \begin{bmatrix} 
+y_{11} & y_{12} & y_{13} & y_{14} \\
+y_{21} & y_{22} & y_{23} & y_{24} \\
+y_{31} & y_{32} & y_{33} & y_{34} \\
+y_{41} & y_{42} & y_{43} & y_{44}
+\end{bmatrix} = \begin{bmatrix} 
+E & F \\
+G & H \\
+\end{bmatrix}
+$$
 Agora vamos fazer a multiplicação entre X e Y. Aplicando o método tradicional chegamos em :
+
+$$Z = X \times Y $$
+$$
+Z = \begin{bmatrix}
+x_{11}y_{11} + x_{12}y_{21} + x_{13}y_{31} + x_{14}y_{41} & x_{11}y_{12} + x_{12}y_{22} + x_{13}y_{32} + x_{14}y_{42} & z_{13} & z_{14} \\
+x_{21}y_{11} + x_{22}y_{21} + x_{23}y_{31} + x_{24}y_{41} & x_{21}y_{12} + x_{22}y_{22} + x_{23}y_{32} + x_{24}y_{42} & z_{23} & z_{24} \\
+z_{31} & z_{32} & z_{33} & z_{34} \\
+z_{41} & z_{42} & z_{43} & z_{44}
+\end{bmatrix} \\
+$$
+??? Checkpoint
+Calcule no Papel $AE + BG$.
+:::Gabarito
+$$
+A \times E + B \times G = 
+$$
+$$
+ \begin{bmatrix}
+x_{11}y_{11} + x_{12}y_{21} + x_{13}y_{31} + x_{14}y_{41} & x_{11}y_{12} + x_{12}y_{22} + x_{13}y_{32} + x_{14}y_{42}  \\
+x_{21}y_{11} + x_{22}y_{21} + x_{23}y_{31} + x_{24}y_{41} & x_{21}y_{12} + x_{22}y_{22} + x_{23}y_{32} + x_{24}y_{42} \\
+\end{bmatrix}
+$$
+Você pode perceber que isto é o segundo quadrante de $Z$.
+:::
+
+???
+!!!
+Note que AE aqui é uma multiplicação de matrizes. Além disso, AE+BG é uma soma de matrizes.
+!!!
+
+Podemos então calcular os outros quadrantes de maneira semelhante:
 $$
 X \times Y = 
 	\begin{bmatrix}
@@ -342,64 +355,10 @@ Note que o resultado dessa multiplicação é muito parecido com a multiplicaç�
 Mas antes de prosseguir vamos fazer uma verificação dessa propriedade. Considere as seguintes matrizes:
 
 
-$$ 
-X = \begin{bmatrix}
-a & b & c & d \\
-e & f & g & h \\
-i & j & k & l \\
-m & n & o & p \\
-\end{bmatrix}
-A =
-\begin{bmatrix}
-a & b \\
-e & f \\
-\end{bmatrix}
- B = 
-\begin{bmatrix}
-c & d \\
-g & h \\
-\end{bmatrix}
-$$
-
-$$ Y = \begin{bmatrix}
-q & r & s & t \\
-u & v & w & x \\
-y & z & \alpha & \beta \\
-\gamma & \delta & \epsilon & \zeta \\
-\end{bmatrix}
-E = 
-\begin{bmatrix}
-q & r \\
-u & v \\
-\end{bmatrix}
-G = 
-\begin{bmatrix}
-y & z \\
-\alpha & \beta \\
-\end{bmatrix}
-$$
-
-??? Checkpoint
-Vamos fazer o check do termo AE + BG, então faça no papel a multiplicação e soma.
-:::Gabarito
-$$
-A \times E + B \times G = 
-\begin{bmatrix}
-a \cdot q + b \cdot u + c \cdot y + d \cdot \gamma & a \cdot r + b \cdot v + c \cdot z + d \cdot \delta\\
-e \cdot q + f \cdot u + g \cdot y + h \cdot \gamma & e \cdot r + f \cdot v + g \cdot z + h \cdot \delta\\
-\end{bmatrix}
-$$
-Você pode perceber que se seguirmos a regra tradicional sem quebrar a matriz em matrizes menores chegaremos no mesmo resultado, então essa propriedade é sim válida!.
-:::
-
-???
-
 O resultado aqui seria o mesmo que multiplicar as duas como matrizes 4x4.
 
 
-!!!
-Note que AE aqui é uma multiplicação de matrizes. Além disso, AE+BG é uma soma de matrizes.
-!!!
+
 
 ??? Checkpoint
 Aplicando a ideia de Strassen e a quebra em matrizes menores, faça o P2 e o P3 de Strassen considerando o produto de matrizes $X \times Y$
