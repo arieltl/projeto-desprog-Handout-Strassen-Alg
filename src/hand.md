@@ -188,6 +188,10 @@ Há 3 loops de 0 a n aninhados, logo a complexidade função é $O(n^3)$.
 É evidente que a complexidade de tempo da multiplicação de matrizes é uma ordem de grandeza superior que a da soma. A multiplicação é uma operação bastante importante para diversas áreas da computação, como processamento de imagens e inteligência artificial. Como podemos aproximar a complexidade da multiplicação
 à da soma?
 
+!!! Atenção
+Note que para realizar a multiplicação de duas matrizes 2x2 são necessárias 4 somas e 8 multiplicações. Mantenha isso em mente por enquanto. Logo será importante.
+!!!
+
 Algoritmo Strassen para caso particular matrizes 2x2 
 ---------
 Volker Strassen descobriu uma forma alternativa para realizar a multiplicação de duas matrizes 2x2. Primeiramente, é necessário calcular 7 produtos
