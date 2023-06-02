@@ -188,6 +188,19 @@ Note que para realizar a multiplicação de duas matrizes 2x2 são necessárias 
 Algoritmo Strassen para caso particular matrizes 2x2 
 ---------
 
+Volker Strassen descobriu uma forma alternativa para realizar a multiplicação de duas matrizes 2x2. Primeiramente, é necessário calcular 7 produtos a partir dos elementos das matrizes que deseja-se multiplicar.
+$$
+	\begin{aligned}
+	P_1 &= (a_{11} + a_{22}) \cdot (b_{11} + b_{22}) \\
+	P_2 &= (a_{21} + a_{22}) \cdot b_{11} \\
+	P_3 &= a_{11} \cdot (b_{12} - b_{22}) \\
+	P_4 &= a_{22} \cdot (b_{21} - b_{11}) \\
+	P_5 &= (a_{11} + a_{12}) \cdot b_{22} \\
+	P_6 &= (a_{21} - a_{11}) \cdot (b_{11} + b_{12}) \\
+	P_7 &= (a_{12} - a_{22}) \cdot (b_{21} + b_{22}) \\
+	\end{aligned}
+$$
+
 ??? Checkpoint
 Dada as matrizes:
 $$
@@ -204,24 +217,16 @@ $$
 	b_{21} & b_{22} \\
 	\end{bmatrix}
 $$
-Calcule $(a_{21} + a_{22}) \cdot b_{11} + a_{22} \cdot (b_{21} - b_{11})$ e compare com o resultado da multiplicação feita anteriormente no papel
+Como podemos calcular a matriz $C$, dado que $C = A \times C$ usando estes produtos? **Dica: Calule $P2 + P4$ e compare com a multiplicação 2x2 feita anteriormente no papel.**
 :::Gabarito
-Você deve ter chegado em $a_{21}b_{11}$+$a_{22}b_{21}$ que é $c_{21}$.
+Você deve ter chegado em $a_{21}b_{11}$+$a_{22}b_{21}$ que é $c_{21}$. Podemos calcular todos elementos de $C$ usando apenas somas destes produtos.
 :::
 ???
 
-Volker Strassen descobriu uma forma alternativa para realizar a multiplicação de duas matrizes 2x2. Primeiramente, é necessário calcular 7 produtos a partir dos elementos das matrizes que deseja-se multiplicar. Note que o cálculo do último checkpoint é $P_2+P_4$.
-$$
-	\begin{aligned}
-	P_1 &= (a_{11} + a_{22}) \cdot (b_{11} + b_{22}) \\
-	P_2 &= (a_{21} + a_{22}) \cdot b_{11} \\
-	P_3 &= a_{11} \cdot (b_{12} - b_{22}) \\
-	P_4 &= a_{22} \cdot (b_{21} - b_{11}) \\
-	P_5 &= (a_{11} + a_{12}) \cdot b_{22} \\
-	P_6 &= (a_{21} - a_{11}) \cdot (b_{11} + b_{12}) \\
-	P_7 &= (a_{12} - a_{22}) \cdot (b_{21} + b_{22}) \\
-	\end{aligned}
-$$
+!!!
+A demonstração de como ele chegou nesses produtos não entra no escopo da disciplina, caso tenha curiosidade veja este [video](https://www.youtube.com/watch?v=OSelhO6Qnlc.) 
+!!!
+
 
 Os outros elementos da matriz $C$ podem ser calculadas usando as expressões abaixo:
 $$
@@ -240,10 +245,6 @@ $$
 	P_2 + P_4 & P_1 - P_2 + P_3 + P_6 \\
 	\end{bmatrix}
 $$
-
-!!!
-A demonstração de como ele chegou nesses produtos não entra no escopo da disciplina, caso tenha curiosidade veja este [video](https://www.youtube.com/watch?v=OSelhO6Qnlc.) 
-!!!
 
 Sabemos que no método tradicional de uma matriz quadrada de ordem n temos $n^3$ multiplicações. Portanto, para resultar uma matriz 2x2 precisamos de 8 multiplicações. Utilizando esse novo método, precisamos apenas de 7 multiplicações. Por outro lado, temos 18 adições para se realizar, enquanto no método tradicional seriam 4.
 
@@ -383,7 +384,7 @@ Agora todos os termos são matrizes!
 Então, se essa propriedade funciona, podemos quebrar matrizes maiores até chegar em matrizes 2 x 2 e utilizar o método de Strassen. Perceba agora que a diminuição do número de multiplicações tem muito mais peso, uma vez que agora estaremos economizando uma multiplicação de matrizes!!
 
 
-Como vimos, somar uma matriz possui complexidade de tempo quadrada enquanto multiplicar tem complexidade cúbica. Se voltarmos a pergunta do fim da seção anterior, agora sim faz sentido ter um numero maior de adicoes pois cada multiplicacao seria $O(n^3)$.
+Como vimos, somar uma matriz possui complexidade de tempo quadrada enquanto multiplicar tem complexidade cúbica. Se voltarmos a pergunta do fim da seção anterior, agora sim faz sentido ter um numero maior de adições pois cada multiplicacao seria $O(n^3)$.
 
 
 Complexidade do Algoritmo de Strassen
@@ -436,7 +437,7 @@ Portanto, podemos definir sua complexidade.
 * Se n for menor ou igual a 1: apenas 1 iteração. (parte não-recursiva)
 * Se n for maior que 1: $n^2$ iterações (parte não-recursiva) + 7 iterações de recursiva(n/2).
 !!! Atenção
-A cada iteração da função serão feitas 18 somas de matrizas. A complexidade da soma de uma matriz é $O(n^2)$.
+A cada iteração da função serão feitas 18 somas de matrizes. A complexidade da soma de uma matriz é $O(n^2)$.
 !!!
 ??? Checkpoint
 
